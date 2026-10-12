@@ -1,0 +1,125 @@
+/* src/components/Phynex/Phynex.module.css */
+.section { background: var(--bg-primary); position: relative; overflow: hidden; }
+
+.bgGlow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle,rgba(6,182,212,0.1),transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.brandCard {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.brandGlow1 {
+  position: absolute;
+  top: -50px; left: -50px;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle,rgba(99,102,241,0.2),transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.brandGlow2 {
+  position: absolute;
+  bottom: -50px; right: -50px;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle,rgba(6,182,212,0.2),transparent);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.brandName {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+
+.brandDesc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.brandStats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.brandStatNum {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.brandStatLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+.appGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.appCard {
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.appCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(6,182,212,0.15);
+}
+
+.appEmoji {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.appName {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.appSub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .appGrid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 600px) {
+  .appGrid { grid-template-columns: 1fr !important; }
+}

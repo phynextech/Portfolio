@@ -1,0 +1,53 @@
+/* src/components/SkillBars/SkillBars.module.css */
+.section { background: var(--bg-secondary); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 60px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.pct {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #a5b4fc;
+}
+
+.track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0; /* Starts at 0, filled by JS on scroll */
+  border-radius: 10px;
+  transition: width 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr !important; }
+}

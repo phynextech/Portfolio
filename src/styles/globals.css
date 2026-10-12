@@ -1,0 +1,357 @@
+/* src/styles/globals.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ================================================================
+   CSS CUSTOM PROPERTIES
+================================================================ */
+:root {
+  --bg-primary: #050811;
+  --bg-secondary: #080d1a;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --border-glass: rgba(255,255,255,0.1);
+  --border-glass-hover: rgba(255,255,255,0.2);
+
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --accent-tertiary: #06b6d4;
+  --accent-pink: #ec4899;
+  --accent-green: #10b981;
+  --accent-orange: #f59e0b;
+
+  --grad-1: linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#06b6d4 100%);
+  --grad-2: linear-gradient(135deg,#ec4899 0%,#8b5cf6 100%);
+  --grad-3: linear-gradient(135deg,#06b6d4 0%,#6366f1 100%);
+
+  --text-primary: #f0f4ff;
+  --text-secondary: rgba(240,244,255,0.65);
+  --text-muted: rgba(240,244,255,0.4);
+
+  --blur-glass: blur(20px) saturate(180%);
+  --radius-card: 20px;
+  --radius-pill: 50px;
+
+  --shadow-glow: 0 0 40px rgba(99,102,241,0.2);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.4),0 1px 0 rgba(255,255,255,0.08) inset;
+  --transition: 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+
+/* ================================================================
+   RESET
+================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+::selection { background: rgba(99,102,241,0.4); color: white; }
+
+a { cursor: none; }
+button { cursor: none; }
+
+/* ================================================================
+   SHARED LAYOUT
+================================================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-pad { padding: 100px 0; }
+
+/* ================================================================
+   GLASS CARD
+================================================================ */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-card);
+  backdrop-filter: var(--blur-glass);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glass-hover);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.1) inset,var(--shadow-glow);
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* ================================================================
+   SECTION LABELS & TITLES
+================================================================ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--accent-primary);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.gradient-text {
+  background: var(--grad-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.section-header { margin-bottom: 60px; }
+
+/* ================================================================
+   BUTTONS
+================================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--grad-1);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(99,102,241,0.4),0 0 0 1px rgba(255,255,255,0.1) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,rgba(255,255,255,0.2),transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(99,102,241,0.6),0 0 0 1px rgba(255,255,255,0.15) inset;
+}
+
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.btn-glass:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-3px);
+}
+
+/* ================================================================
+   SCROLL REVEAL ANIMATIONS
+================================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stagger-children.visible > * { opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0s; }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.40s; }
+.stagger-children.visible > *:nth-child(7) { transition-delay: 0.48s; }
+.stagger-children.visible > *:nth-child(8) { transition-delay: 0.56s; }
+.stagger-children.visible > *:nth-child(9) { transition-delay: 0.64s; }
+
+/* ================================================================
+   GRADIENT DIVIDER
+================================================================ */
+.grad-divider {
+  height: 1px;
+  background: linear-gradient(90deg,transparent,var(--accent-primary),var(--accent-secondary),transparent);
+  opacity: 0.3;
+}
+
+/* ================================================================
+   NOISE OVERLAY
+================================================================ */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* ================================================================
+   FLOATING ORB ANIMATIONS
+================================================================ */
+@keyframes float-orb {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px,-30px) scale(1.05); }
+  66% { transform: translate(-20px,20px) scale(0.95); }
+}
+
+@keyframes pulse-dot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-left {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float-badge {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes avatar-glow {
+  from { box-shadow: 0 0 0 4px rgba(99,102,241,0.2),0 0 0 8px rgba(99,102,241,0.08); }
+  to { box-shadow: 0 0 0 4px rgba(139,92,246,0.4),0 0 30px rgba(99,102,241,0.3); }
+}
+
+@keyframes fade-bounce {
+  0%,100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+}
+
+/* ================================================================
+   BLINK CURSOR
+================================================================ */
+.blink-hide { opacity: 0 !important; }
+
+/* ================================================================
+   CUSTOM CURSOR (DOT, RING, GLOW)
+================================================================ */
+.cursor-dot, .cursor-ring, .cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: white;
+  box-shadow: 0 0 10px white;
+}
+
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-glow {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 900px) {
+  .section-pad { padding: 70px 0; }
+}
+
+@media (max-width: 600px) {
+  .section-pad { padding: 60px 0; }
+}
